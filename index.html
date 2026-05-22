@@ -4,19 +4,19 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ReadyAid Lab — Making everyone ready to aid.</title>
-<meta name="description" content="응급실 도착 전(Pre-ER), 비의료인이 의학적으로 옳은 첫 대응을 할 수 있게 한다. 레디에이드랩 — 응급의학 전문의가 설계한 모듈형 응급 대응 시스템." />
+<meta name="description" content="레디에이드랩 — 응급의학 전문의가 시작한 응급 대응 시스템 개발사." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
 
 <style>
-/* ===== Brand Tokens (명함·로고에서 추출) ===== */
+/* ===== Brand Tokens ===== */
 :root {
   --red: #C71604;
   --black: #000000;
-  --bone: #F7F3EC;        /* 명함 배경 */
+  --navy: #0C0342;
+  --bone: #F7F3EC;
   --bone-soft: #EFEAE0;
   --gray: #595959;
   --gray-soft: #8A8480;
@@ -39,16 +39,7 @@ body {
 
 ::selection { background: var(--red); color: var(--bone); }
 
-/* 명함의 t./e./a. prefix 패턴 — 공통 클래스 */
-.prefix {
-  color: var(--red);
-  font-weight: 700;
-  font-style: italic;
-  margin-right: 0.4em;
-  letter-spacing: -0.01em;
-}
-
-/* ===== NAV — 명함처럼 한 줄에 절제된 정보 ===== */
+/* ===== NAV ===== */
 .nav {
   position: fixed;
   top: 0;
@@ -58,7 +49,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.5rem 3rem;
+  padding: 1.8rem 3rem;
   background: rgba(247, 243, 236, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -71,7 +62,7 @@ body {
   text-decoration: none;
 }
 .nav-logo img {
-  height: 28px;
+  height: 48px;
   width: auto;
   display: block;
 }
@@ -84,7 +75,7 @@ body {
 .nav-links a {
   color: var(--black);
   text-decoration: none;
-  font-size: 0.88rem;
+  font-size: 0.92rem;
   font-weight: 500;
   letter-spacing: -0.01em;
   transition: color 0.2s;
@@ -103,14 +94,13 @@ body {
 }
 .nav-links a:hover::after { width: 100%; }
 
-/* ===== HERO — 명함 레이아웃 직접 이식 ===== */
-/* 명함: 본문(좌) + 회전 로고(우) 구조를 그대로 */
+/* ===== HERO (명함 레이아웃) ===== */
 .hero {
   min-height: 100vh;
-  padding: 9rem 3rem 5rem;
+  padding: 10rem 3rem 5rem;
   position: relative;
   display: grid;
-  grid-template-columns: 1fr 240px;
+  grid-template-columns: 1fr 320px;
   gap: 0;
   align-items: stretch;
 }
@@ -122,17 +112,21 @@ body {
   padding-right: 3rem;
 }
 
-/* 명함의 이름 자리 — 가장 큰 타이포 */
+/* 헤드라인 — 3줄 */
 .hero-name {
   font-family: 'Pretendard Variable', Pretendard, sans-serif;
   font-weight: 900;
-  font-size: clamp(3rem, 7vw, 6.5rem);
-  line-height: 1.02;
+  font-size: clamp(3.2rem, 8vw, 7.5rem);
+  line-height: 1.0;
   letter-spacing: -0.045em;
   color: var(--black);
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   opacity: 0;
   animation: fadeUp 0.9s ease-out 0.2s forwards;
+}
+.hero-name .line {
+  display: block;
+  margin-bottom: 0.1em;
 }
 .hero-name .em {
   color: var(--red);
@@ -140,10 +134,10 @@ body {
   font-weight: 900;
 }
 
-/* 명함의 직책 자리 — 부제 */
+/* 부제 */
 .hero-role {
-  font-size: 1.15rem;
-  font-weight: 400;
+  font-size: 1.2rem;
+  font-weight: 500;
   color: var(--black);
   line-height: 1.6;
   margin-bottom: 0.4rem;
@@ -151,7 +145,7 @@ body {
   animation: fadeUp 0.9s ease-out 0.4s forwards;
 }
 .hero-role-2 {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 400;
   color: var(--gray);
   line-height: 1.6;
@@ -160,29 +154,7 @@ body {
   animation: fadeUp 0.9s ease-out 0.5s forwards;
 }
 
-/* 명함의 연락처 영역 — t./e./a. 패턴 그대로 */
-.hero-contact {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-  font-size: 1.05rem;
-  font-weight: 500;
-  opacity: 0;
-  animation: fadeUp 0.9s ease-out 0.7s forwards;
-}
-.hero-contact-row {
-  display: flex;
-  align-items: baseline;
-}
-.hero-contact-row .label-prefix {
-  color: var(--red);
-  font-weight: 700;
-  font-style: italic;
-  width: 2.4rem;
-  flex-shrink: 0;
-}
-
-/* 명함 우측 회전 로고 박스 — 그대로 이식 */
+/* 명함 우측 회전 박스 — 크기 키움 */
 .hero-side {
   position: relative;
   background: var(--bone);
@@ -197,18 +169,18 @@ body {
   white-space: nowrap;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 2.5rem;
   opacity: 0;
   animation: fadeIn 1s ease-out 0.6s forwards;
 }
 .hero-side-tagline {
-  font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--black);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--navy);
 }
 .hero-side-logo {
-  height: 36px;
+  height: 64px;
   width: auto;
 }
 
@@ -223,7 +195,7 @@ body {
 
 /* ===== MISSION ===== */
 .mission {
-  padding: 8rem 3rem;
+  padding: 9rem 3rem;
   background: var(--bone);
   border-top: 1px solid var(--hairline);
   position: relative;
@@ -240,8 +212,8 @@ body {
 
 .mission-text {
   font-weight: 900;
-  font-size: clamp(2.2rem, 5vw, 4.4rem);
-  line-height: 1.08;
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  line-height: 1.15;
   letter-spacing: -0.035em;
   color: var(--black);
   max-width: 60rem;
@@ -252,38 +224,31 @@ body {
 }
 
 .mission-bottom {
-  margin-top: 4rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+  margin-top: 5rem;
   padding-top: 3rem;
   border-top: 1px solid var(--hairline);
+  max-width: 50rem;
 }
 
-.mission-bottom-block {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
 .mission-bottom-label {
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   color: var(--red);
   text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 .mission-bottom-text {
-  font-size: 1.05rem;
+  font-size: 1.15rem;
   font-weight: 400;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--black);
-  max-width: 28rem;
 }
 .mission-bottom-text strong { font-weight: 700; }
 
 /* ===== PROBLEM (Pre-ER) ===== */
 .problem {
-  padding: 8rem 3rem;
+  padding: 9rem 3rem;
   background: var(--bone-soft);
   position: relative;
 }
@@ -316,112 +281,16 @@ body {
 
 .section-lead {
   margin-top: 1rem;
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: 1.1rem;
+  line-height: 1.7;
   color: var(--gray);
-  max-width: 44rem;
+  max-width: 50rem;
   grid-column: 2;
-}
-
-.timeline {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2px;
-  background: var(--hairline);
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
-}
-
-.timeline-cell {
-  background: var(--bone-soft);
-  padding: 3rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  position: relative;
-  transition: background 0.3s, color 0.3s;
-  cursor: default;
-}
-.timeline-cell:hover { background: var(--black); color: var(--bone); }
-.timeline-cell:hover .timeline-time { color: var(--red); }
-.timeline-cell:hover .timeline-stat .v { color: var(--bone); }
-.timeline-cell:hover .timeline-stat .k { color: var(--gray-soft); }
-.timeline-cell:hover .timeline-tag {
-  background: rgba(247, 243, 236, 0.12);
-  color: var(--bone);
-  border-color: rgba(247, 243, 236, 0.2);
-}
-
-.timeline-tag {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.3rem 0.6rem;
-  background: var(--bone);
-  border: 1px solid var(--hairline);
-  color: var(--gray);
-  align-self: flex-start;
-  transition: all 0.3s;
-}
-
-.timeline-time {
-  font-weight: 900;
-  font-size: 4.5rem;
-  line-height: 0.95;
-  letter-spacing: -0.04em;
-  color: var(--red);
-  font-style: italic;
-  transition: color 0.3s;
-}
-.timeline-time .unit {
-  font-size: 1.4rem;
-  margin-left: 0.4rem;
-  letter-spacing: -0.02em;
-  font-style: normal;
-}
-
-.timeline-name {
-  font-weight: 700;
-  font-size: 1.35rem;
-  letter-spacing: -0.02em;
-  margin-top: 0.4rem;
-}
-
-.timeline-body {
-  font-size: 0.92rem;
-  line-height: 1.6;
-  color: var(--gray);
-  margin-bottom: 1rem;
-}
-.timeline-cell:hover .timeline-body { color: var(--bone-soft); }
-
-.timeline-stat {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-top: auto;
-  padding-top: 1rem;
-  border-top: 1px solid var(--hairline);
-  font-size: 0.78rem;
-  font-weight: 500;
-}
-.timeline-cell:hover .timeline-stat { border-color: rgba(247, 243, 236, 0.15); }
-.timeline-stat .k {
-  color: var(--gray);
-  letter-spacing: 0.04em;
-  transition: color 0.3s;
-}
-.timeline-stat .v {
-  color: var(--black);
-  font-weight: 700;
-  transition: color 0.3s;
 }
 
 .problem-quote {
   margin-top: 4rem;
-  padding: 2.5rem 3rem;
+  padding: 3rem 3rem;
   background: var(--black);
   color: var(--bone);
   display: grid;
@@ -442,9 +311,9 @@ body {
   line-height: 1;
 }
 .problem-quote-text {
-  font-size: clamp(1.2rem, 2.2vw, 1.7rem);
+  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
   font-weight: 500;
-  line-height: 1.45;
+  line-height: 1.5;
   letter-spacing: -0.02em;
   padding-left: 3rem;
 }
@@ -458,111 +327,16 @@ body {
   white-space: nowrap;
 }
 
-/* ===== SOLUTION (PRODUCTS) ===== */
-.products {
-  padding: 8rem 3rem;
-  background: var(--bone);
-}
-
-.products-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1px;
-  background: var(--hairline);
-  border: 1px solid var(--hairline);
-}
-
-.product {
-  background: var(--bone);
-  padding: 2.5rem 2rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
-  min-height: 24rem;
-  position: relative;
-  transition: background 0.3s, color 0.3s;
-  cursor: default;
-}
-.product:hover { background: var(--black); color: var(--bone); }
-.product:hover .product-code { color: var(--red); }
-.product:hover .product-status { color: var(--gray-soft); border-color: rgba(247, 243, 236, 0.2); }
-.product:hover .product-meta { border-color: rgba(247, 243, 236, 0.15); }
-.product:hover .product-meta-row { border-color: rgba(247, 243, 236, 0.1); }
-.product:hover .product-meta-row .k { color: var(--gray-soft); }
-
-.product-status {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  font-size: 0.62rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gray);
-  padding: 0.25rem 0.55rem;
-  border: 1px solid var(--hairline);
-  transition: all 0.3s;
-}
-
-.product-code {
-  font-weight: 900;
-  font-size: 2.6rem;
-  font-style: italic;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: var(--red);
-  transition: color 0.3s;
-}
-
-.product-name {
-  font-weight: 700;
-  font-size: 1.45rem;
-  letter-spacing: -0.025em;
-}
-
-.product-desc {
-  font-size: 0.9rem;
-  line-height: 1.6;
-  color: var(--gray);
-  flex: 1;
-}
-.product:hover .product-desc { color: var(--bone-soft); }
-
-.product-meta {
-  margin-top: 1rem;
-  padding-top: 1.2rem;
-  border-top: 1px solid var(--hairline);
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.product-meta-row {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.78rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px dashed var(--hairline-soft);
-}
-.product-meta-row:last-child { border-bottom: none; padding-bottom: 0; }
-.product-meta-row .k {
-  color: var(--gray);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-}
-.product-meta-row .v {
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-/* ===== VALUES (4축) ===== */
+/* ===== VALUES ===== */
 .values {
-  padding: 8rem 3rem;
+  padding: 9rem 3rem;
   background: var(--black);
   color: var(--bone);
 }
 .values .section-num { color: var(--red); }
 .values .section-title { color: var(--bone); }
 .values .section-head { border-bottom-color: rgba(247, 243, 236, 0.15); }
+.values .section-lead { color: var(--gray-soft); }
 
 .values-grid {
   display: grid;
@@ -585,21 +359,21 @@ body {
 }
 .value-name-en {
   font-weight: 900;
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-style: italic;
   letter-spacing: -0.03em;
   line-height: 1;
   color: var(--bone);
 }
 .value-name-ko {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--red);
-  margin-top: 0.4rem;
+  margin-top: 0.5rem;
   letter-spacing: -0.01em;
 }
 .value-body {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 400;
   line-height: 1.65;
   color: var(--bone-soft);
@@ -608,7 +382,7 @@ body {
 
 /* ===== CTA ===== */
 .cta {
-  padding: 8rem 3rem;
+  padding: 9rem 3rem;
   background: var(--bone);
 }
 
@@ -622,7 +396,7 @@ body {
 .cta-head {
   font-weight: 900;
   font-size: clamp(2.4rem, 5.5vw, 5rem);
-  line-height: 1.02;
+  line-height: 1.05;
   letter-spacing: -0.035em;
 }
 .cta-head .em {
@@ -637,8 +411,8 @@ body {
 }
 
 .cta-text {
-  font-size: 1.05rem;
-  line-height: 1.65;
+  font-size: 1.1rem;
+  line-height: 1.7;
   color: var(--gray);
 }
 
@@ -652,12 +426,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1.3rem 1.7rem;
+  padding: 1.4rem 1.8rem;
   background: var(--black);
   color: var(--bone);
   text-decoration: none;
   font-weight: 700;
-  font-size: 1.02rem;
+  font-size: 1.05rem;
   letter-spacing: -0.01em;
   border: 2px solid var(--black);
   transition: all 0.25s;
@@ -678,14 +452,7 @@ body {
 .btn-text, .btn-arrow { position: relative; z-index: 1; }
 .btn-arrow { font-weight: 400; font-size: 1.3rem; }
 
-.btn.outline {
-  background: transparent;
-  color: var(--black);
-}
-.btn.outline::before { background: var(--black); }
-.btn.outline:hover { color: var(--bone); border-color: var(--black); }
-
-/* ===== FOOTER — 명함의 연락처 영역 그대로 ===== */
+/* ===== FOOTER ===== */
 .footer {
   padding: 5rem 3rem 2.5rem;
   background: var(--bone);
@@ -700,27 +467,28 @@ body {
 }
 
 .footer-brand-logo {
-  height: 32px;
+  height: 56px;
   width: auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
 }
 
 .footer-brand-name {
   font-weight: 900;
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   margin-bottom: 0.4rem;
+  letter-spacing: -0.02em;
 }
 .footer-brand-role {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   color: var(--gray);
   margin-bottom: 0.3rem;
 }
 .footer-brand-tag {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   color: var(--red);
   font-weight: 600;
   font-style: italic;
-  margin-top: 1.2rem;
+  margin-top: 1.3rem;
 }
 
 .footer-col-title {
@@ -734,16 +502,15 @@ body {
   border-bottom: 1px solid var(--hairline);
 }
 
-/* 명함의 t./e./a. 그대로 */
 .footer-contact {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.8rem;
 }
 .footer-contact-row {
   display: flex;
   align-items: baseline;
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 500;
 }
 .footer-contact-row .label-prefix {
@@ -763,10 +530,10 @@ body {
 .footer-nav {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: 0.8rem;
 }
 .footer-nav a {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--black);
   text-decoration: none;
@@ -780,7 +547,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--gray);
 }
 .footer-bottom .legal-prefix {
@@ -792,31 +559,31 @@ body {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1100px) {
-  .timeline, .values-grid { grid-template-columns: repeat(2, 1fr); }
-  .products-grid { grid-template-columns: repeat(2, 1fr); }
+  .values-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 800px) {
-  .nav { padding: 1rem 1.5rem; }
+  .nav { padding: 1.2rem 1.5rem; }
+  .nav-logo img { height: 36px; }
   .nav-links { gap: 1.2rem; }
-  .nav-links a { font-size: 0.8rem; }
+  .nav-links a { font-size: 0.85rem; }
   .hero {
     grid-template-columns: 1fr;
     padding: 8rem 1.5rem 4rem;
   }
   .hero-main { padding-right: 0; }
   .hero-side { display: none; }
-  .mission, .problem, .products, .values, .cta, .footer { padding-left: 1.5rem; padding-right: 1.5rem; }
+  .mission, .problem, .values, .cta, .footer { padding-left: 1.5rem; padding-right: 1.5rem; }
   .section-head { grid-template-columns: 1fr; gap: 0.6rem; }
   .section-lead { grid-column: 1; }
-  .timeline, .values-grid, .products-grid { grid-template-columns: 1fr; }
-  .mission-bottom, .cta-inner, .footer-grid {
+  .values-grid { grid-template-columns: 1fr; }
+  .cta-inner, .footer-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
   .problem-quote {
     grid-template-columns: 1fr;
-    padding: 2rem 1.5rem 2rem 1.5rem;
+    padding: 2rem 1.5rem;
   }
   .problem-quote-text { padding-left: 0; padding-top: 2rem; }
   .footer-bottom { flex-direction: column; gap: 1rem; align-items: flex-start; }
@@ -829,52 +596,33 @@ body {
 <!-- ========== NAV ========== -->
 <nav class="nav">
   <a href="#top" class="nav-logo">
-    <img src="assets/logo-main.png" alt="ReadyAid" />
+    <img src="assets/logo-navy.png" alt="ReadyAid" />
   </a>
   <div class="nav-links">
     <a href="#mission">Mission</a>
     <a href="#problem">Pre-ER</a>
-    <a href="#products">Products</a>
     <a href="#values">Values</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
 
-<!-- ========== HERO (명함 레이아웃) ========== -->
+<!-- ========== HERO ========== -->
 <section class="hero" id="top">
   <div class="hero-main">
-    <!-- 명함의 큰 이름 자리 = 헤드라인 -->
     <h1 class="hero-name">
-      Making everyone<br />
-      <span class="em">ready</span> to aid.
+      <span class="line">Making everyone</span>
+      <span class="line"><span class="em">ready</span></span>
+      <span class="line">to aid.</span>
     </h1>
 
-    <!-- 명함의 직책 자리 = 회사 소개 -->
     <div class="hero-role">레디에이드랩 — ReadyAid Lab</div>
-    <div class="hero-role-2">응급의학 전문의가 설계한 모듈형 응급 대응 시스템</div>
-
-    <!-- 명함의 t./e./a. 자리 = 핵심 정보 -->
-    <div class="hero-contact">
-      <div class="hero-contact-row">
-        <span class="label-prefix">m.</span>
-        <span>Mission — 누구나, 현장에서, 즉시 도울 수 있게 준비시킨다</span>
-      </div>
-      <div class="hero-contact-row">
-        <span class="label-prefix">f.</span>
-        <span>For — 응급실 도착 전 5분의 Pre-ER 시간대</span>
-      </div>
-      <div class="hero-contact-row">
-        <span class="label-prefix">b.</span>
-        <span>By — 응급의학과 전문의 · 119 의료지도의사</span>
-      </div>
-    </div>
+    <div class="hero-role-2">응급의학 전문의가 시작한 응급 대응 시스템</div>
   </div>
 
-  <!-- 명함 우측 회전 박스 그대로 -->
   <aside class="hero-side">
     <div class="hero-side-inner">
       <span class="hero-side-tagline">First Aid By anyone. On scene. In seconds.</span>
-      <img src="assets/logo-main.png" alt="ReadyAid" class="hero-side-logo" />
+      <img src="assets/logo-navy.png" alt="ReadyAid" class="hero-side-logo" />
     </div>
   </aside>
 </section>
@@ -883,27 +631,17 @@ body {
 <section class="mission" id="mission">
   <div class="mission-eyebrow">— Our Mission</div>
   <h2 class="mission-text">
-    심정지에 <span class="em">AED</span>가 있다면,<br />
-    출혈과 응급 현장에는 <span class="em">ReadyAid</span>가 있다.
+    누구나, 현장에서, <br />
+    <span class="em">바로 처치</span>할 수 있게 한다.
   </h2>
 
   <div class="mission-bottom">
-    <div class="mission-bottom-block">
-      <div class="mission-bottom-label">— Why We Exist</div>
-      <p class="mission-bottom-text">
-        구급차가 도착하기 전 골든타임은 이미 끝난다.
-        응급실 도착 전 5분, <strong>표준 대응 시스템이 없는 Pre-ER 영역</strong>을
-        ReadyAid가 정의한다.
-      </p>
-    </div>
-    <div class="mission-bottom-block">
-      <div class="mission-bottom-label">— Our Model</div>
-      <p class="mission-bottom-text">
-        AED가 1990년대 심정지에 대해 만든 공식 —
-        <strong>비전문가도 살릴 수 있는 시스템</strong> —을
-        출혈·안구·절단 등 Pre-ER 전 영역으로 확장한다.
-      </p>
-    </div>
+    <div class="mission-bottom-label">— Why We Exist</div>
+    <p class="mission-bottom-text">
+      구급차가 도착하기 전, 골든타임은 이미 끝난다.
+      응급실 도착 전 <strong>표준 대응 시스템이 없는 Pre-ER 영역</strong>을
+      ReadyAid가 정의한다.
+    </p>
   </div>
 </section>
 
@@ -914,53 +652,9 @@ body {
     <div>
       <h2 class="section-title">표준이 없는 <span class="em">Pre-ER</span> 5분</h2>
       <p class="section-lead">
-        구급차가 현장에 도착할 때까지 8~17분. 그 사이 골든타임은 끝나고,
-        비의료인은 무엇을 해야 할지 모른다. 응급 유형별 골든타임은 분 단위로 더 짧다.
+        구급차가 현장에 도착할 때까지 8~17분.
+        그 사이 골든타임은 끝나고, 비의료인은 무엇을 해야 할지 모른다.
       </p>
-    </div>
-  </div>
-
-  <div class="timeline">
-    <div class="timeline-cell">
-      <span class="timeline-tag">Cardiac Arrest</span>
-      <div class="timeline-time">4<span class="unit">min</span></div>
-      <div class="timeline-name">심정지</div>
-      <p class="timeline-body">
-        뇌 손상까지 4분. 1990년대 AED가 해결한 영역.
-        시설 의무 설치 6만 개소로 생존율 3배 향상.
-      </p>
-      <div class="timeline-stat">
-        <span class="k">기존 솔루션</span>
-        <span class="v">AED ✓</span>
-      </div>
-    </div>
-
-    <div class="timeline-cell">
-      <span class="timeline-tag">Hemorrhage</span>
-      <div class="timeline-time">5<span class="unit">min</span></div>
-      <div class="timeline-name">대량 출혈</div>
-      <p class="timeline-body">
-        연간 9만 건+. 비훈련 일반인 적정 압박 달성률 33%.
-        TERI 1분 지연 = 30일 사망률 +2%.
-      </p>
-      <div class="timeline-stat">
-        <span class="k">기존 솔루션</span>
-        <span class="v">✕ 국내 無</span>
-      </div>
-    </div>
-
-    <div class="timeline-cell">
-      <span class="timeline-tag">Ocular Burn</span>
-      <div class="timeline-time">90<span class="unit">sec</span></div>
-      <div class="timeline-name">안구 화학 손상</div>
-      <p class="timeline-body">
-        연간 6만 건+. 90초 안에 1L 세척 시작해야 시력 보존.
-        현장 이동형 표준 제품 없음.
-      </p>
-      <div class="timeline-stat">
-        <span class="k">기존 솔루션</span>
-        <span class="v">✕ 국내 無</span>
-      </div>
     </div>
   </div>
 
@@ -973,91 +667,14 @@ body {
   </div>
 </section>
 
-<!-- ========== PRODUCTS ========== -->
-<section class="products" id="products">
-  <div class="section-head">
-    <div class="section-num">02 — Solution</div>
-    <div>
-      <h2 class="section-title"><span class="em">ReadyAid</span> System</h2>
-      <p class="section-lead">
-        하나의 시스템, 여러 모듈. 골든타임 영역별로 전용 제품이 분리되고,
-        EFMR 소프트웨어가 모든 모듈을 119 인계 데이터로 통합한다.
-      </p>
-    </div>
-  </div>
-
-  <div class="products-grid">
-    <div class="product">
-      <div class="product-status">Prototype</div>
-      <div class="product-code">H-01</div>
-      <div class="product-name">BleedLock</div>
-      <p class="product-desc">
-        AHA·ARC 1단계 직접 압박. 비훈련 일반인이 정량 게이지로 적정 압력을 확인하며 사용.
-        무전원 기계식.
-      </p>
-      <div class="product-meta">
-        <div class="product-meta-row"><span class="k">대응</span><span class="v">대량 출혈</span></div>
-        <div class="product-meta-row"><span class="k">골든타임</span><span class="v">5분</span></div>
-        <div class="product-meta-row"><span class="k">목표 압력</span><span class="v">200 mmHg</span></div>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-status">Prototype</div>
-      <div class="product-code">E-01</div>
-      <div class="product-name">EyeWash</div>
-      <p class="product-desc">
-        현장 이동형 안구 세척 키트. 1L 의학 기준 세척량 충족, 15분 지속 세척.
-        한 손으로 패닉 상황에서도 사용 가능.
-      </p>
-      <div class="product-meta">
-        <div class="product-meta-row"><span class="k">대응</span><span class="v">안구 화학 손상</span></div>
-        <div class="product-meta-row"><span class="k">골든타임</span><span class="v">90초</span></div>
-        <div class="product-meta-row"><span class="k">세척량</span><span class="v">1 L</span></div>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-status">Concept</div>
-      <div class="product-code">P-01</div>
-      <div class="product-name">PreserveKit</div>
-      <p class="product-desc">
-        절단물·조직 보존 키트. 재접합 가능 시간대 안에서 조직 활성을 유지하는
-        적정 온도·습도 패키지.
-      </p>
-      <div class="product-meta">
-        <div class="product-meta-row"><span class="k">대응</span><span class="v">절단·조직 손상</span></div>
-        <div class="product-meta-row"><span class="k">골든타임</span><span class="v">60분</span></div>
-        <div class="product-meta-row"><span class="k">단계</span><span class="v">개념 설계</span></div>
-      </div>
-    </div>
-
-    <div class="product">
-      <div class="product-status">MVP</div>
-      <div class="product-code">SW</div>
-      <div class="product-name">EFMR</div>
-      <p class="product-desc">
-        Emergency First Minutes Record. 모듈 연동 가이드 앱.
-        행동 유도, 자동 기록, 119 자동 인계 리포트.
-      </p>
-      <div class="product-meta">
-        <div class="product-meta-row"><span class="k">대응</span><span class="v">판단 보조</span></div>
-        <div class="product-meta-row"><span class="k">대상</span><span class="v">119·시설</span></div>
-        <div class="product-meta-row"><span class="k">단계</span><span class="v">MVP 개발</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ========== VALUES ========== -->
 <section class="values" id="values">
   <div class="section-head">
-    <div class="section-num">03 — Principles</div>
+    <div class="section-num">02 — Principles</div>
     <div>
-      <h2 class="section-title">제품을 관통하는 4개의 축</h2>
+      <h2 class="section-title">우리를 관통하는 4개의 축</h2>
       <p class="section-lead">
-        모든 ReadyAid 제품은 이 네 가지를 동시에 충족해야 한다.
-        하나라도 빠지면 \"비훈련 일반인이 사용 가능한 시스템\"이 성립하지 않는다.
+        ReadyAid가 만드는 모든 것은 이 네 가지를 동시에 충족해야 한다.
       </p>
     </div>
   </div>
@@ -1077,7 +694,7 @@ body {
       <div class="value-name-en">Aid<div class="value-name-ko">의학적으로 옳은 행동</div></div>
       <p class="value-body">
         단순한 자신감이 아닌 임상 효과.
-        가이드라인(AHA·ARC·TCCC) 친화적 설계.
+        가이드라인 친화적 설계.
       </p>
     </div>
 
@@ -1086,7 +703,7 @@ body {
       <div class="value-name-en">Certain<div class="value-name-ko">기계식 신뢰성</div></div>
       <p class="value-body">
         무전원 기계식. 배터리·소프트웨어 실패 모드 제거.
-        영하 20°C ~ 영상 60°C 작동.
+        극한 환경에서도 작동.
       </p>
     </div>
 
@@ -1094,7 +711,7 @@ body {
       <div class="value-num">— 04</div>
       <div class="value-name-en">Guided<div class="value-name-ko">정량 피드백</div></div>
       <p class="value-body">
-        게이지·click·앱이 \"올바른 적용\"을 알려준다.
+        "올바른 적용"을 직접 알려준다.
         실시간 피드백으로 오사용 차단.
       </p>
     </div>
@@ -1110,16 +727,13 @@ body {
     </h2>
     <div class="cta-right">
       <p class="cta-text">
-        파일럿 설치, 학교·산업 시설 비치 협의, IR, 임상 협력 등
-        모든 문의는 이메일로 받습니다. 응급의학 전문의가 직접 응답합니다.
+        파일럿 협의, 임상 협력, 투자, 언론 문의 등
+        모든 연락은 이메일로 받습니다.
+        응급의학 전문의가 직접 응답합니다.
       </p>
       <div class="btn-row">
-        <a href="mailto:readyaidlab@gmail.com" class="btn">
-          <span class="btn-text">readyaidlab@gmail.com</span>
-          <span class="btn-arrow">→</span>
-        </a>
-        <a href="tel:01048216803" class="btn outline">
-          <span class="btn-text">010 — 4821 — 6803</span>
+        <a href="mailto:contact@readyaidlab.com" class="btn">
+          <span class="btn-text">contact@readyaidlab.com</span>
           <span class="btn-arrow">→</span>
         </a>
       </div>
@@ -1127,11 +741,11 @@ body {
   </div>
 </section>
 
-<!-- ========== FOOTER (명함 톤 그대로) ========== -->
+<!-- ========== FOOTER ========== -->
 <footer class="footer">
   <div class="footer-grid">
     <div>
-      <img src="assets/logo-main.png" alt="ReadyAid" class="footer-brand-logo" />
+      <img src="assets/logo-navy.png" alt="ReadyAid" class="footer-brand-logo" />
       <div class="footer-brand-name">김 현 성</div>
       <div class="footer-brand-role">레디에이드랩 대표</div>
       <div class="footer-brand-role">응급의학과 전문의</div>
@@ -1142,12 +756,8 @@ body {
       <div class="footer-col-title">Contact</div>
       <div class="footer-contact">
         <div class="footer-contact-row">
-          <span class="label-prefix">t.</span>
-          <a href="tel:01048216803">010 - 4821 - 6803</a>
-        </div>
-        <div class="footer-contact-row">
           <span class="label-prefix">e.</span>
-          <a href="mailto:readyaidlab@gmail.com">readyaidlab@gmail.com</a>
+          <a href="mailto:contact@readyaidlab.com">contact@readyaidlab.com</a>
         </div>
         <div class="footer-contact-row">
           <span class="label-prefix">a.</span>
@@ -1161,7 +771,6 @@ body {
       <nav class="footer-nav">
         <a href="#mission">Mission</a>
         <a href="#problem">Pre-ER Problem</a>
-        <a href="#products">Products</a>
         <a href="#values">Principles</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -1178,7 +787,6 @@ body {
 </footer>
 
 <script>
-// 스크롤 시 fadeUp 애니메이션
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1188,10 +796,10 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-document.querySelectorAll('.timeline-cell, .product, .value-item, .mission-bottom-block').forEach(el => {
+document.querySelectorAll('.value-item, .mission-bottom').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(24px)';
-  el.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out, background 0.3s, color 0.3s';
+  el.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
   observer.observe(el);
 });
 </script>
