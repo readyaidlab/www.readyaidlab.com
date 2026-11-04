@@ -6,6 +6,10 @@
 <title>ReadyAid Lab — Making everyone ready to aid.</title>
 <meta name="description" content="레디에이드랩 — 응급의학 전문의가 시작한 응급 대응 시스템 개발사." />
 
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+
 <style>
 /* ===== Brand Tokens ===== */
 :root {
@@ -585,67 +589,24 @@ body {
   .problem-quote-text { padding-left: 0; padding-top: 2rem; }
   .footer-bottom { flex-direction: column; gap: 1rem; align-items: flex-start; }
 }
-
-/* Reconstructed bilingual edition: responsive and accessible navigation. */
-body { font-family: Arial, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; }
-.hero-name { font-family: inherit; font-size: clamp(3rem, 7.4vw, 7.5rem); }
-html { scroll-padding-top: 6rem; }
-section { scroll-margin-top: 5rem; }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-offset: 6px; }
-.skip-link { position: fixed; left: 1rem; top: -6rem; background: var(--black); color: white; padding: .8rem 1rem; z-index: 200; }
-.skip-link:focus { top: 1rem; }
-.nav-controls { display:flex; align-items:center; gap:2rem; }
-.language-switch { display:flex; align-items:center; gap:.55rem; border-left:1px solid var(--hairline); padding-left:1.5rem; font-size:.75rem; font-weight:700; }
-.language-switch a { text-decoration:none; color:var(--gray); padding:.45rem .15rem; }
-.language-switch a[aria-current="page"] { color:var(--red); }
-.language-switch span { color:#8a8480; }
-.menu-toggle { display:none; border:1px solid var(--black); background:transparent; color:var(--black); font:inherit; padding:.5rem .8rem; cursor:pointer; }
-.value-name-ko { font-family:inherit; font-style:normal; font-weight:600; line-height:1.5; }
-.value-body { max-width:26rem; }
-.footer-brand-logo { max-width:100%; height:auto; width:200px; }
-.hero { min-height: min(900px, 100svh); }
-.hero-role-2 { max-width:38rem; }
-.section-num { line-height:1.6; }
-.footer-contact-row { overflow-wrap:anywhere; }
-.cta-inner > *, .footer-grid > *, .hero-main, .section-head > * { min-width:0; }
-.problem-quote-attr { color:#b5afa9; }
-.values .section-lead, .value-num { color:#b5afa9; }
-@media (min-width:1600px) { .nav { padding-left:max(3rem,calc((100vw - 1504px)/2)); padding-right:max(3rem,calc((100vw - 1504px)/2)); } .hero,.mission,.problem,.values,.cta,.footer { padding-left:max(3rem,calc((100vw - 1504px)/2)); padding-right:max(3rem,calc((100vw - 1504px)/2)); } }
-@media (max-width:1000px) and (min-width:801px) { .hero { grid-template-columns:1fr 170px; } .hero-name { font-size:7.2vw; } .hero-side-tagline { font-size:1.1rem; } }
-@media (max-width:800px) { .hero { min-height:85svh; } .hero-name { font-size:clamp(2.7rem,8.7vw,4.5rem); } .mission,.problem,.values,.cta { padding-top:5rem; padding-bottom:5rem; } .section-head { margin-bottom:3rem; } .mission-bottom { margin-top:3rem; } .nav-controls { gap:1rem; } .nav-links { gap:1rem; } .language-switch { padding-left:1rem; } .cta-inner { gap:2rem; } }
-@media (max-width:650px) { .nav { padding: .8rem 1.25rem; flex-wrap:wrap; gap:.75rem; } .nav-logo img { height:26px; max-width:145px; object-fit:contain; } .nav-controls { gap:.8rem; } .language-switch { border-left:0; padding-left:0; } .menu-toggle { display:block; font-size:.8rem; } .nav-links { display:flex; width:100%; order:3; justify-content:space-between; gap:.5rem; padding:.75rem 0 .25rem; border-top:1px solid var(--hairline); } .nav-controls .nav-links { display:none; } .nav-links[hidden] { display:none; } .nav-links a { font-size:.85rem; } .hero { padding:9.5rem 1.25rem 4rem; } .hero-name { font-size:clamp(2.35rem,8.6vw,3.5rem); letter-spacing:-.045em; } .hero-role { font-size:1rem; } .hero-role-2 { font-size:1rem; } .mission,.problem,.values,.cta,.footer { padding-left:1.25rem; padding-right:1.25rem; } .problem-quote { margin-top:2rem; } .section-title { font-size:2rem; } .mission-text { font-size:2.4rem; } .cta-head { font-size:2.65rem; } .btn { padding:1rem; font-size:clamp(.8rem,3.6vw,1rem); gap:.5rem; } .footer-grid { margin-bottom:2.5rem; } .footer { padding-top:3.5rem; } }
-@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none!important; transition:none!important; } .hero-name,.hero-role,.hero-role-2,.hero-side-inner { opacity:1; transform:none; } }
-@media print { .nav,.skip-link { display:none; } .hero { min-height:auto; } .hero-name,.hero-role,.hero-role-2,.hero-side-inner { opacity:1; } section,.footer { break-inside:avoid; } }
 </style>
-<meta name="theme-color" content="#F7F3EC" />
-<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-<link rel="canonical" href="https://www.readyaidlab.com/" />
-<link rel="alternate" hreflang="ko" href="https://www.readyaidlab.com/" />
-<link rel="alternate" hreflang="en" href="https://www.readyaidlab.com/en/" />
-<link rel="alternate" hreflang="x-default" href="https://www.readyaidlab.com/" />
-<meta property="og:title" content="ReadyAid Lab | Making everyone ready to aid." />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://www.readyaidlab.com/" />
-<meta property="og:image" content="https://www.readyaidlab.com/assets/logo-lab.png" />
 </head>
 
 <body>
 
 <!-- ========== NAV ========== -->
-<a class="skip-link" href="#main">본문으로 이동</a>
-<nav class="nav" aria-label="주 메뉴">
-  <a href="#top" class="nav-logo" aria-label="ReadyAid Lab 홈"><img src="/assets/logo-lab.png" alt="ReadyAid Lab" width="175" height="32" /></a>
-  <div class="nav-links" id="primary-links">
-    <a href="#mission">Mission</a><a href="#problem">Pre-ER</a><a href="#values">Values</a><a href="#contact">Contact</a>
+<nav class="nav">
+  <a href="#top" class="nav-logo">
+    <img src="assets/logo-lab.png" alt="ReadyAid" />
+  </a>
+  <div class="nav-links">
+    <a href="#mission">Mission</a>
+    <a href="#problem">Pre-ER</a>
+    <a href="#values">Values</a>
+    <a href="#contact">Contact</a>
   </div>
-  <div class="nav-controls">
-    <div class="language-switch" aria-label="언어 선택"><a href="/" lang="ko" hreflang="ko" aria-current="page">KO</a><span aria-hidden="true">/</span><a href="/en/" lang="en" hreflang="en" >EN</a></div>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-links">메뉴</button>
-  </div>
-
 </nav>
 
-<main id="main">
 <!-- ========== HERO ========== -->
 <section class="hero" id="top">
   <div class="hero-main">
@@ -781,12 +742,11 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
   </div>
 </section>
 
-</main>
 <!-- ========== FOOTER ========== -->
 <footer class="footer">
   <div class="footer-grid">
     <div>
-      <img src="/assets/logo-lab.png" alt="ReadyAid" class="footer-brand-logo" />
+      <img src="assets/logo-lab.png" alt="ReadyAid" class="footer-brand-logo" />
       <div class="footer-brand-name">김 현 성</div>
       <div class="footer-brand-role">레디에이드랩 대표</div>
       <div class="footer-brand-role">응급의학과 전문의</div>
@@ -827,18 +787,22 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
   </div>
 </footer>
 
-<script>(() => {
-  const toggle = document.querySelector('.menu-toggle');
-  const links = document.getElementById('primary-links');
-  if (!toggle || !links) return;
-  const mobile = window.matchMedia('(max-width: 650px)');
-  const close = () => { toggle.setAttribute('aria-expanded', 'false'); links.hidden = mobile.matches; };
-  close();
-  toggle.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') !== 'true'; toggle.setAttribute('aria-expanded', String(open)); links.hidden = !open; });
-  links.addEventListener('click', event => { if (event.target.closest('a')) close(); });
-  document.addEventListener('keydown', event => { if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { close(); toggle.focus(); } });
-  mobile.addEventListener('change', close);
-})();
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+document.querySelectorAll('.value-item, .mission-bottom').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
+  observer.observe(el);
+});
 </script>
 
 </body>
