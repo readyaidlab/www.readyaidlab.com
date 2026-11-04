@@ -1,0 +1,31 @@
+# ReadyAid Lab website
+
+공식 홈페이지: https://www.readyaidlab.com/
+영문 홈페이지: https://www.readyaidlab.com/en/
+
+## 관리 구조
+- 도메인 구매처: 가비아 (사용자 확인)
+- 소스 저장소: readyaidlab/www.readyaidlab.com
+- 운영 호스팅: Vercel
+- 한국어: index.html
+- 영어: en.html
+- 로고: assets/ 폴더
+- 주소 연결: vercel.json이 /en 및 /en/을 en.html로 연결
+- 파비콘: favicon.svg
+
+## 내용 수정
+GitHub에서 index.html 또는 en.html을 열고 연필 아이콘으로 수정합니다. 두 파일은 각각 CSS·JS를 포함하며 별도 빌드나 패키지 설치가 필요 없습니다. 언어별 내용은 자동 번역·동기화되지 않으므로 양쪽 파일을 함께 검토하세요.
+문구는 HTML 본문, 색·여백·글꼴은 각 파일의 style 영역에서 변경합니다. 이메일 변경 시 표시 문구와 mailto 링크도 함께 바꿉니다.
+
+## 배포와 확인
+이 저장소의 main 브랜치는 기존 Vercel Production 배포에 사용되어 왔습니다. main 수정은 운영 사이트에 반영될 수 있으므로 미리보기 브랜치에서 먼저 확인하는 방식을 권장합니다.
+커밋 후 GitHub의 Deployments → Production과 Vercel 배포 상태를 확인하고, 실제 한국어·영문 URL, KO/EN, 모바일 메뉴, 이메일 링크를 검증하세요. 성공한 커밋만으로 실제 도메인 반영이 검증되는 것은 아닙니다.
+
+## 복구 기준
+영문판 추가 전 기준 커밋: 3d40bac07681c1d8f622a1faa895d9a17171cb07
+이전 버전은 GitHub 커밋 이력으로 확인할 수 있습니다. 되돌릴 때는 Vercel 배포와 실제 도메인을 다시 검증하세요.
+
+## 주의
+가비아 DNS, MX 및 이메일 설정은 홈페이지 문구 수정에 필요하지 않습니다. 임의로 변경하지 마세요.
+영문판의 30초 사용시간·신뢰성·피드백 관련 문구는 설계 목표·원칙이며 제품별 시험·허가 완료 주장으로 사용하지 않습니다.
+문의는 mailto 링크 방식입니다. 서버·DB·관리자 CMS는 포함하지 않습니다.
