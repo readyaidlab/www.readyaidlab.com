@@ -1,0 +1,10 @@
+# Local development tools and package metadata are not website content.
+tools/**
+*.cmd
+CLAUDE.md
+START-HERE.md
+README.md
+SOURCE-VERSION.json
+SHA256SUMS.txt
+.local/**
+.git/**

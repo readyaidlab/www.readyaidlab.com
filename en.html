@@ -5,618 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>ReadyAid Lab — Making everyone ready to aid.</title>
 <meta name="description" content="ReadyAid Lab develops emergency response systems, founded by an emergency medicine specialist. Making everyone ready to aid." />
-
-<style>
-/* ===== Brand Tokens ===== */
-:root {
-  --red: #C71604;
-  --black: #000000;
-  --navy: #0C0342;
-  --bone: #F7F3EC;
-  --bone-soft: #EFEAE0;
-  --gray: #595959;
-  --gray-soft: #8A8480;
-  --hairline: rgba(0, 0, 0, 0.10);
-  --hairline-soft: rgba(0, 0, 0, 0.05);
-}
-
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-  background: var(--bone);
-  color: var(--black);
-  font-family: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
-  font-weight: 400;
-  line-height: 1.55;
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-::selection { background: var(--red); color: var(--bone); }
-
-/* ===== NAV ===== */
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.9rem 3rem;
-  background: rgba(247, 243, 236, 0.92);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--hairline);
-}
-
-.nav-logo {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-}
-.nav-logo img {
-  height: 32px;
-  width: auto;
-  display: block;
-}
-
-.nav-links {
-  display: flex;
-  gap: 2.5rem;
-  align-items: center;
-}
-.nav-links a {
-  color: var(--black);
-  text-decoration: none;
-  font-size: 0.92rem;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  transition: color 0.2s;
-  position: relative;
-}
-.nav-links a:hover { color: var(--red); }
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -4px;
-  width: 0;
-  height: 1px;
-  background: var(--red);
-  transition: width 0.3s;
-}
-.nav-links a:hover::after { width: 100%; }
-
-/* ===== HERO (명함 레이아웃) ===== */
-.hero {
-  min-height: 100vh;
-  padding: 10rem 3rem 5rem;
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 0;
-  align-items: stretch;
-}
-
-.hero-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding-right: 3rem;
-}
-
-/* 헤드라인 — 3줄 */
-.hero-name {
-  font-family: 'Pretendard Variable', Pretendard, sans-serif;
-  font-weight: 900;
-  font-size: clamp(3.2rem, 8vw, 7.5rem);
-  line-height: 1.0;
-  letter-spacing: -0.045em;
-  color: var(--black);
-  margin-bottom: 2.5rem;
-  opacity: 0;
-  animation: fadeUp 0.9s ease-out 0.2s forwards;
-}
-.hero-name .line {
-  display: block;
-  margin-bottom: 0.1em;
-}
-.hero-name .em {
-  color: var(--red);
-  font-style: italic;
-  font-weight: 900;
-}
-
-/* 부제 */
-.hero-role {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: var(--black);
-  line-height: 1.6;
-  margin-bottom: 0.4rem;
-  opacity: 0;
-  animation: fadeUp 0.9s ease-out 0.4s forwards;
-}
-.hero-role-2 {
-  font-size: 1.05rem;
-  font-weight: 400;
-  color: var(--gray);
-  line-height: 1.6;
-  margin-bottom: 3.5rem;
-  opacity: 0;
-  animation: fadeUp 0.9s ease-out 0.5s forwards;
-}
-
-/* 명함 우측 회전 박스 — 크기 키움 */
-.hero-side {
-  position: relative;
-  background: var(--bone);
-  border-left: 1px solid var(--hairline);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-.hero-side-inner {
-  transform: rotate(-90deg);
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  gap: 2.5rem;
-  opacity: 0;
-  animation: fadeIn 1s ease-out 0.6s forwards;
-}
-.hero-side-tagline {
-  font-size: 1.3rem;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-  color: var(--navy);
-}
-.hero-side-logo {
-  height: 72px;
-  width: auto;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* ===== MISSION ===== */
-.mission {
-  padding: 9rem 3rem;
-  background: var(--bone);
-  border-top: 1px solid var(--hairline);
-  position: relative;
-}
-
-.mission-eyebrow {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.18em;
-  color: var(--red);
-  margin-bottom: 2rem;
-  text-transform: uppercase;
-}
-
-.mission-text {
-  font-weight: 900;
-  font-size: clamp(2rem, 4.5vw, 4rem);
-  line-height: 1.15;
-  letter-spacing: -0.035em;
-  color: var(--black);
-  max-width: 60rem;
-}
-.mission-text .em {
-  color: var(--red);
-  font-style: italic;
-}
-
-.mission-bottom {
-  margin-top: 5rem;
-  padding-top: 3rem;
-  border-top: 1px solid var(--hairline);
-  max-width: 50rem;
-}
-
-.mission-bottom-label {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--red);
-  text-transform: uppercase;
-  margin-bottom: 1rem;
-}
-.mission-bottom-text {
-  font-size: 1.15rem;
-  font-weight: 400;
-  line-height: 1.7;
-  color: var(--black);
-}
-.mission-bottom-text strong { font-weight: 700; }
-
-/* ===== PROBLEM (Pre-ER) ===== */
-.problem {
-  padding: 9rem 3rem;
-  background: var(--bone-soft);
-  position: relative;
-}
-
-.section-head {
-  display: grid;
-  grid-template-columns: 100px 1fr;
-  gap: 2rem;
-  align-items: baseline;
-  margin-bottom: 5rem;
-  padding-bottom: 2rem;
-  border-bottom: 1px solid var(--hairline);
-}
-
-.section-num {
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--red);
-}
-
-.section-title {
-  font-weight: 900;
-  font-size: clamp(1.8rem, 4vw, 3.2rem);
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  color: var(--black);
-}
-.section-title .em { color: var(--red); font-style: italic; }
-
-.section-lead {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--gray);
-  max-width: 50rem;
-  grid-column: 2;
-}
-
-.problem-quote {
-  margin-top: 4rem;
-  padding: 3rem 3rem;
-  background: var(--black);
-  color: var(--bone);
-  display: grid;
-  grid-template-columns: 1fr auto;
-  align-items: end;
-  gap: 3rem;
-  position: relative;
-}
-.problem-quote::before {
-  content: '"';
-  position: absolute;
-  top: -1rem;
-  left: 2rem;
-  font-size: 5rem;
-  color: var(--red);
-  font-style: italic;
-  font-weight: 900;
-  line-height: 1;
-}
-.problem-quote-text {
-  font-size: clamp(1.3rem, 2.4vw, 1.9rem);
-  font-weight: 500;
-  line-height: 1.5;
-  letter-spacing: -0.02em;
-  padding-left: 3rem;
-}
-.problem-quote-text .em { color: var(--red); font-style: italic; font-weight: 700; }
-.problem-quote-attr {
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gray-soft);
-  white-space: nowrap;
-}
-
-/* ===== VALUES ===== */
-.values {
-  padding: 9rem 3rem;
-  background: var(--black);
-  color: var(--bone);
-}
-.values .section-num { color: var(--red); }
-.values .section-title { color: var(--bone); }
-.values .section-head { border-bottom-color: rgba(247, 243, 236, 0.15); }
-.values .section-lead { color: var(--gray-soft); }
-
-.values-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem;
-}
-
-.value-item {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding-top: 1.5rem;
-  border-top: 2px solid var(--red);
-}
-.value-num {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  color: var(--gray-soft);
-}
-.value-name-en {
-  font-weight: 900;
-  font-size: 2.2rem;
-  font-style: italic;
-  letter-spacing: -0.03em;
-  line-height: 1;
-  color: var(--bone);
-}
-.value-name-ko {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--red);
-  margin-top: 0.5rem;
-  letter-spacing: -0.01em;
-}
-.value-body {
-  font-size: 0.95rem;
-  font-weight: 400;
-  line-height: 1.65;
-  color: var(--bone-soft);
-  margin-top: 0.8rem;
-}
-
-/* ===== CTA ===== */
-.cta {
-  padding: 9rem 3rem;
-  background: var(--bone);
-}
-
-.cta-inner {
-  display: grid;
-  grid-template-columns: 1.2fr 1fr;
-  gap: 5rem;
-  align-items: end;
-}
-
-.cta-head {
-  font-weight: 900;
-  font-size: clamp(2.4rem, 5.5vw, 5rem);
-  line-height: 1.05;
-  letter-spacing: -0.035em;
-}
-.cta-head .em {
-  color: var(--red);
-  font-style: italic;
-  margin-right: 0.3em;
-}
-
-.cta-right {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.cta-text {
-  font-size: 1.1rem;
-  line-height: 1.7;
-  color: var(--gray);
-}
-
-.btn-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
-
-.btn {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.4rem 1.8rem;
-  background: var(--black);
-  color: var(--bone);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
-  border: 2px solid var(--black);
-  transition: all 0.25s;
-  position: relative;
-  overflow: hidden;
-}
-.btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--red);
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-  z-index: 0;
-}
-.btn:hover { border-color: var(--red); }
-.btn:hover::before { transform: translateX(0); }
-.btn-text, .btn-arrow { position: relative; z-index: 1; }
-.btn-arrow { font-weight: 400; font-size: 1.3rem; }
-
-/* ===== FOOTER ===== */
-.footer {
-  padding: 5rem 3rem 2.5rem;
-  background: var(--bone);
-  border-top: 1px solid var(--hairline);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  gap: 4rem;
-  margin-bottom: 4rem;
-}
-
-.footer-brand-logo {
-  height: 72px;
-  width: auto;
-  margin-bottom: 1.8rem;
-}
-
-.footer-brand-name {
-  font-weight: 900;
-  font-size: 1.5rem;
-  margin-bottom: 0.4rem;
-  letter-spacing: -0.02em;
-}
-.footer-brand-role {
-  font-size: 0.95rem;
-  color: var(--gray);
-  margin-bottom: 0.3rem;
-}
-.footer-brand-tag {
-  font-size: 0.9rem;
-  color: var(--red);
-  font-weight: 600;
-  font-style: italic;
-  margin-top: 1.3rem;
-}
-
-.footer-col-title {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--gray);
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--hairline);
-}
-
-.footer-contact {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-.footer-contact-row {
-  display: flex;
-  align-items: baseline;
-  font-size: 0.95rem;
-  font-weight: 500;
-}
-.footer-contact-row .label-prefix {
-  color: var(--red);
-  font-weight: 700;
-  font-style: italic;
-  width: 1.8rem;
-  flex-shrink: 0;
-}
-.footer-contact-row a {
-  color: var(--black);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.footer-contact-row a:hover { color: var(--red); }
-
-.footer-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
-}
-.footer-nav a {
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--black);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.footer-nav a:hover { color: var(--red); }
-
-.footer-bottom {
-  padding-top: 2rem;
-  border-top: 1px solid var(--hairline);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 0.8rem;
-  color: var(--gray);
-}
-.footer-bottom .legal-prefix {
-  color: var(--red);
-  font-weight: 700;
-  font-style: italic;
-  margin-right: 0.3rem;
-}
-
-/* ===== RESPONSIVE ===== */
-@media (max-width: 1100px) {
-  .values-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 800px) {
-  .nav { padding: 0.6rem 1.5rem; }
-  .nav-logo img { height: 24px; }
-  .nav-links { gap: 1.2rem; }
-  .nav-links a { font-size: 0.85rem; }
-  .hero {
-    grid-template-columns: 1fr;
-    padding: 8rem 1.5rem 4rem;
-  }
-  .hero-main { padding-right: 0; }
-  .hero-side { display: none; }
-  .mission, .problem, .values, .cta, .footer { padding-left: 1.5rem; padding-right: 1.5rem; }
-  .section-head { grid-template-columns: 1fr; gap: 0.6rem; }
-  .section-lead { grid-column: 1; }
-  .values-grid { grid-template-columns: 1fr; }
-  .cta-inner, .footer-grid {
-    grid-template-columns: 1fr;
-    gap: 2.5rem;
-  }
-  .problem-quote {
-    grid-template-columns: 1fr;
-    padding: 2rem 1.5rem;
-  }
-  .problem-quote-text { padding-left: 0; padding-top: 2rem; }
-  .footer-bottom { flex-direction: column; gap: 1rem; align-items: flex-start; }
-}
-
-/* Reconstructed bilingual edition: responsive and accessible navigation. */
-body { font-family: Arial, 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif; }
-.hero-name { font-family: inherit; font-size: clamp(3rem, 7.4vw, 7.5rem); }
-html { scroll-padding-top: 6rem; }
-section { scroll-margin-top: 5rem; }
-a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-offset: 6px; }
-.skip-link { position: fixed; left: 1rem; top: -6rem; background: var(--black); color: white; padding: .8rem 1rem; z-index: 200; }
-.skip-link:focus { top: 1rem; }
-.nav-controls { display:flex; align-items:center; gap:2rem; }
-.language-switch { display:flex; align-items:center; gap:.55rem; border-left:1px solid var(--hairline); padding-left:1.5rem; font-size:.75rem; font-weight:700; }
-.language-switch a { text-decoration:none; color:var(--gray); padding:.45rem .15rem; }
-.language-switch a[aria-current="page"] { color:var(--red); }
-.language-switch span { color:#8a8480; }
-.menu-toggle { display:none; border:1px solid var(--black); background:transparent; color:var(--black); font:inherit; padding:.5rem .8rem; cursor:pointer; }
-.value-name-ko { font-family:inherit; font-style:normal; font-weight:600; line-height:1.5; }
-.value-body { max-width:26rem; }
-.footer-brand-logo { max-width:100%; height:auto; width:200px; }
-.hero { min-height: min(900px, 100svh); }
-.hero-role-2 { max-width:38rem; }
-.section-num { line-height:1.6; }
-.footer-contact-row { overflow-wrap:anywhere; }
-.cta-inner > *, .footer-grid > *, .hero-main, .section-head > * { min-width:0; }
-.problem-quote-attr { color:#b5afa9; }
-.values .section-lead, .value-num { color:#b5afa9; }
-@media (min-width:1600px) { .nav { padding-left:max(3rem,calc((100vw - 1504px)/2)); padding-right:max(3rem,calc((100vw - 1504px)/2)); } .hero,.mission,.problem,.values,.cta,.footer { padding-left:max(3rem,calc((100vw - 1504px)/2)); padding-right:max(3rem,calc((100vw - 1504px)/2)); } }
-@media (max-width:1000px) and (min-width:801px) { .hero { grid-template-columns:1fr 170px; } .hero-name { font-size:7.2vw; } .hero-side-tagline { font-size:1.1rem; } }
-@media (max-width:800px) { .hero { min-height:85svh; } .hero-name { font-size:clamp(2.7rem,8.7vw,4.5rem); } .mission,.problem,.values,.cta { padding-top:5rem; padding-bottom:5rem; } .section-head { margin-bottom:3rem; } .mission-bottom { margin-top:3rem; } .nav-controls { gap:1rem; } .nav-links { gap:1rem; } .language-switch { padding-left:1rem; } .cta-inner { gap:2rem; } }
-@media (max-width:650px) { .nav { padding: .8rem 1.25rem; flex-wrap:wrap; gap:.75rem; } .nav-logo img { height:26px; max-width:145px; object-fit:contain; } .nav-controls { gap:.8rem; } .language-switch { border-left:0; padding-left:0; } .menu-toggle { display:block; font-size:.8rem; } .nav-links { display:flex; width:100%; order:3; justify-content:space-between; gap:.5rem; padding:.75rem 0 .25rem; border-top:1px solid var(--hairline); } .nav-controls .nav-links { display:none; } .nav-links[hidden] { display:none; } .nav-links a { font-size:.85rem; } .hero { padding:9.5rem 1.25rem 4rem; } .hero-name { font-size:clamp(2.35rem,8.6vw,3.5rem); letter-spacing:-.045em; } .hero-role { font-size:1rem; } .hero-role-2 { font-size:1rem; } .mission,.problem,.values,.cta,.footer { padding-left:1.25rem; padding-right:1.25rem; } .problem-quote { margin-top:2rem; } .section-title { font-size:2rem; } .mission-text { font-size:2.4rem; } .cta-head { font-size:2.65rem; } .btn { padding:1rem; font-size:clamp(.8rem,3.6vw,1rem); gap:.5rem; } .footer-grid { margin-bottom:2.5rem; } .footer { padding-top:3.5rem; } }
-@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } *,*::before,*::after { animation:none!important; transition:none!important; } .hero-name,.hero-role,.hero-role-2,.hero-side-inner { opacity:1; transform:none; } }
-@media print { .nav,.skip-link { display:none; } .hero { min-height:auto; } .hero-name,.hero-role,.hero-role-2,.hero-side-inner { opacity:1; } section,.footer { break-inside:avoid; } }
-</style>
 <meta name="theme-color" content="#F7F3EC" />
 <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 <link rel="canonical" href="https://www.readyaidlab.com/en/" />
@@ -627,36 +15,54 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://www.readyaidlab.com/en/" />
 <meta property="og:image" content="https://www.readyaidlab.com/assets/logo-lab.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+<link rel="stylesheet" href="/assets/site.css?v=20261112i" />
+<script>
+(function(){var d=document.documentElement;d.classList.add('js');
+/* headline is drawn by dots (assets/field.js); the HTML text stays transparent underneath */
+if('WebGLRenderingContext' in window&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){d.classList.add('gl-intro');
+setTimeout(function(){if(!d.classList.contains('gl-on'))d.classList.remove('gl-intro');},6000);}})();
+</script>
 </head>
 
 <body>
+<a class="skip-link" href="#main">Skip to content</a>
+<canvas id="field" aria-hidden="true"></canvas>
 
 <!-- ========== NAV ========== -->
-<a class="skip-link" href="#main">Skip to content</a>
 <nav class="nav" aria-label="Main navigation">
-  <a href="#top" class="nav-logo" aria-label="ReadyAid Lab home"><img src="/assets/logo-lab.png" alt="ReadyAid Lab" width="175" height="32" /></a>
-  <div class="nav-links" id="primary-links">
-    <a href="#mission">Mission</a><a href="#problem">Pre-ER</a><a href="#values">Principles</a><a href="#contact">Contact</a>
+  <a href="#top" class="nav-logo" aria-label="ReadyAid Lab home">
+    <img src="/assets/logo-lab.png" alt="ReadyAid" />
+  </a>
+  <div class="nav-links">
+    <a href="#mission">Mission</a>
+    <a href="#problem">Pre-ER</a>
+    <a href="#values">Values</a>
+    <a href="#contact">Contact</a>
+    <a href="/" lang="ko" hreflang="ko" class="language-ko" aria-label="한국어 웹사이트">KO</a>
   </div>
-  <div class="nav-controls">
-    <div class="language-switch" aria-label="Language"><a href="/" lang="ko" hreflang="ko" >KO</a><span aria-hidden="true">/</span><a href="/en/" lang="en" hreflang="en" aria-current="page">EN</a></div>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-links">Menu</button>
-  </div>
-
 </nav>
 
-<main id="main">
-<!-- ========== HERO ========== -->
-<section class="hero" id="top">
-  <div class="hero-main">
-    <h1 class="hero-name">
-      <span class="line">Making everyone</span>
-      <span class="line"><span class="em">ready</span></span>
-      <span class="line">to aid.</span>
-    </h1>
+<nav class="dots" id="dots" aria-label="Pages"></nav>
 
-    <div class="hero-role">ReadyAid Lab</div>
-    <div class="hero-role-2">Emergency response systems, founded by an emergency medicine specialist.</div>
+<main id="main">
+
+<!-- ========== HERO ========== -->
+<section class="hero" id="top" data-scene="hero" data-name="ReadyAid Lab">
+  <div class="hero-main">
+    <div class="hero-text">
+      <h1 class="hero-name">
+        <span class="line">Making everyone</span>
+        <span class="line"><span class="em">Ready</span></span>
+        <span class="line">to aid.</span>
+      </h1>
+
+      <div class="hero-role">ReadyAid Lab</div>
+      <div class="hero-role-2">Emergency response systems,<br class="d" />founded by an emergency medicine specialist.</div>
+    </div>
   </div>
 
   <aside class="hero-side">
@@ -667,99 +73,197 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 </section>
 
 <!-- ========== MISSION ========== -->
-<section class="mission" id="mission">
-  <div class="mission-eyebrow">— Our Mission</div>
-  <h2 class="mission-text">
-    Anyone. On scene.<br />
-    <span class="em">Ready to act.</span><br />
-    When it matters.
-  </h2>
+<section class="scene mission" id="mission" data-scene="mission" data-name="Mission">
+  <div class="scene-grid">
+    <div class="copy">
+      <div class="mission-eyebrow">— Our Mission</div>
+      <h2 class="mission-text">
+        <span class="ln">Anyone. On scene.</span>
+        <span class="ln"><span class="em">Ready to act.</span></span>
+        <span class="ln">When it matters.</span>
+      </h2>
 
-  <div class="mission-bottom">
-    <div class="mission-bottom-label">— Why We Exist</div>
-    <p class="mission-bottom-text">
-      Critical time can be lost before an ambulance arrives.
-      ReadyAid is working to define <strong>Pre-ER: the gap in structured emergency response
-      before emergency care reaches the patient.</strong>
-    </p>
+      <div class="mission-bottom">
+        <div class="mission-bottom-label">— Why We Exist</div>
+        <p class="mission-bottom-text">
+          Critical time can be lost before an ambulance arrives.<br />
+          ReadyAid is working to define <strong>Pre-ER: the gap in structured emergency response
+          before emergency care reaches the patient.</strong>
+        </p>
+      </div>
+    </div>
+    <div class="art" aria-hidden="true">
+      <div class="steps"><span class="step">Anyone</span><span class="step">On scene</span><span class="step">Ready to act</span></div>
+    </div>
   </div>
 </section>
 
 <!-- ========== PROBLEM ========== -->
-<section class="problem" id="problem">
-  <div class="section-head">
-    <div class="section-num">01 — Problem</div>
-    <div>
-      <h2 class="section-title">The critical <span class="em">Pre-ER</span> gap</h2>
+<section class="scene flip bg-soft" id="problem" data-scene="problem" data-name="Pre-ER">
+  <div class="scene-grid">
+    <div class="copy">
+      <div class="section-num">01 — Problem</div>
+      <h2 class="section-title">The critical <span class="nw"><span class="em">Pre-ER</span> gap</span></h2>
       <p class="section-lead">
-        Before an ambulance arrives, every moment matters.
-        Yet people without medical training may not know what to do next.
+        Before an ambulance arrives, every moment matters.<br />
+        Yet people without medical training<br class="d" />
+        may not know what to do next.
       </p>
     </div>
-  </div>
-
-  <div class="problem-quote">
-    <div class="problem-quote-text">
-      AEDs show what is possible. With the right <span class="em">system</span>,
-      people without medical training can help save lives.
+    <div class="art" aria-hidden="true">
+      <span class="art-label sig" style="left:27.75%;top:41%">Golden time</span>
+      <span class="art-label" style="left:18%;top:71%">0</span>
+      <span class="art-label" style="left:37.5%;top:71%">5 min</span>
+      <span class="art-label" style="left:49.2%;top:71%">8 min</span>
+      <span class="art-label" style="left:84.3%;top:71%">17 min</span>
     </div>
-    <div class="problem-quote-attr">— ReadyAid Thesis</div>
+  </div>
+</section>
+
+<!-- ========== THESIS ========== -->
+<section class="scene bg-soft" id="thesis" data-scene="thesis" data-name="ReadyAid Thesis">
+  <div class="scene-grid">
+    <div class="copy">
+      <div class="problem-quote">
+        <div class="problem-quote-text">
+          AEDs show what is possible.<br />
+          With the right <span class="em">system</span>,<br />
+          people without medical training<br />
+          can help save lives.
+        </div>
+        <div class="problem-quote-attr">— ReadyAid Thesis</div>
+      </div>
+    </div>
+    <div class="art" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ========== WHY ========== -->
+<section class="scene flip rule" id="why" data-scene="why" data-name="Why ReadyAid">
+  <div class="scene-grid">
+    <div class="copy">
+      <div class="mission-eyebrow">— Why ReadyAid</div>
+      <h2 class="why-text">
+        <span class="ln">From relying on the one best person</span>
+        <span class="ln">to a system that delivers</span>
+        <span class="ln"><span class="em">the same result</span>, whoever is there.</span>
+      </h2>
+      <p class="mission-bottom-text why-body">
+        The outcome of an emergency should not depend<br class="d" />
+        on who happened to be there.<br />
+        ReadyAid Lab builds tools and systems so that anyone,<br class="d" />
+        regardless of skill or experience,<br class="d" />
+        can deliver the medically right first response.
+      </p>
+    </div>
+    <div class="art" aria-hidden="true"></div>
   </div>
 </section>
 
 <!-- ========== VALUES ========== -->
-<section class="values" id="values">
+<section class="values" id="values" data-scene="values" data-name="Principles">
   <div class="section-head">
     <div class="section-num">02 — Principles</div>
     <div>
       <h2 class="section-title">Four principles. One purpose.</h2>
-      <p class="section-lead">
-        Everything we build is guided by all four. These are our design principles.
-      </p>
+      <p class="section-lead">Everything we build is guided by all four.<br />These are our design principles.</p>
     </div>
   </div>
 
   <div class="values-grid">
-    <div class="value-item">
-      <div class="value-num">— 01</div>
-      <div class="value-name-en">Ready<div class="value-name-ko">Make readiness intuitive</div></div>
-      <p class="value-body">
-        Our design goal: enable an untrained person to begin use within 30 seconds.
-        An intuitive experience, from opening the package to taking action.
-      </p>
+    <div class="value-col">
+      <div class="art value-art" aria-hidden="true"></div>
+      <div class="value-item">
+        <div class="value-num">— 01</div>
+        <div class="value-name-en">Ready<div class="value-name-ko">Make readiness intuitive</div></div>
+        <p class="value-body">Our design goal: enable an untrained person to begin use within 30 seconds.<br />An intuitive experience, from opening the package to taking action.</p>
+      </div>
     </div>
-
-    <div class="value-item">
-      <div class="value-num">— 02</div>
-      <div class="value-name-en">Aid<div class="value-name-ko">Support the right action</div></div>
-      <p class="value-body">
-        Designed for meaningful clinical impact, not confidence alone.
-        Guided by medical practice and relevant guidelines.
-      </p>
+    <div class="value-col">
+      <div class="art value-art" aria-hidden="true"></div>
+      <div class="value-item">
+        <div class="value-num">— 02</div>
+        <div class="value-name-en">Aid<div class="value-name-ko">Support the right action</div></div>
+        <p class="value-body">Designed for meaningful clinical impact, not confidence alone.<br />Guided by medical practice and relevant guidelines.</p>
+      </div>
     </div>
-
-    <div class="value-item">
-      <div class="value-num">— 03</div>
-      <div class="value-name-en">Certain<div class="value-name-ko">Mechanical reliability</div></div>
-      <p class="value-body">
-        A power-free, mechanical approach that avoids reliance on batteries or software.
-        Designed with demanding environments in mind.
-      </p>
+    <div class="value-col">
+      <div class="art value-art" aria-hidden="true"></div>
+      <div class="value-item">
+        <div class="value-num">— 03</div>
+        <div class="value-name-en">Certain<div class="value-name-ko">Mechanical reliability</div></div>
+        <p class="value-body">A power-free, mechanical approach that avoids reliance on batteries or software.<br />Designed with demanding environments in mind.</p>
+      </div>
     </div>
-
-    <div class="value-item">
-      <div class="value-num">— 04</div>
-      <div class="value-name-en">Guided<div class="value-name-ko">Measurable feedback</div></div>
-      <p class="value-body">
-        Feedback designed to indicate correct application in real time,
-        helping users act with clarity and reducing the risk of misuse.
-      </p>
+    <div class="value-col">
+      <div class="art value-art" aria-hidden="true"></div>
+      <div class="value-item">
+        <div class="value-num">— 04</div>
+        <div class="value-name-en">Guided<div class="value-name-ko">Measurable feedback</div></div>
+        <p class="value-body">Feedback designed to indicate correct application in real time,<br />helping users act with clarity and reducing the risk of misuse.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- ========== PRINCIPLE 01–04 ========== -->
+<section class="scene" id="ready" data-scene="ready" data-name="Ready">
+  <div class="scene-grid">
+    <div class="copy">
+      <div class="detail-num">— 01</div>
+      <h2 class="detail-name">Ready</h2>
+      <p class="detail-ko">Make readiness intuitive</p>
+      <p class="detail-body">Our design goal: enable an untrained person<br class="d" />to begin use within 30 seconds.<br />An intuitive experience,<br class="d" />from opening the package to taking action.</p>
+    </div>
+    <div class="art" aria-hidden="true">
+      <span class="art-label" style="left:17%;top:63%">Open</span>
+      <span class="art-label" style="left:50%;top:63%">Take out</span>
+      <span class="art-label" style="left:83%;top:63%">Start aid</span>
+      <span class="art-label" style="left:8%;top:86%">0 s</span>
+      <span class="art-label sig" style="left:92%;top:86%">30 s</span>
+    </div>
+  </div>
+</section>
+
+<section class="scene flip rule" id="aid" data-scene="aid" data-name="Aid">
+  <div class="scene-grid">
+    <div class="copy">
+      <div class="detail-num">— 02</div>
+      <h2 class="detail-name">Aid</h2>
+      <p class="detail-ko">Support the right action</p>
+      <p class="detail-body">Designed for meaningful clinical impact,<br class="d" />not confidence alone.<br />Guided by medical practice and relevant guidelines.</p>
+    </div>
+    <div class="art" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="scene rule" id="certain" data-scene="certain" data-name="Certain">
+  <div class="scene-grid">
+    <div class="copy">
+      <div class="detail-num">— 03</div>
+      <h2 class="detail-name">Certain</h2>
+      <p class="detail-ko">Mechanical reliability</p>
+      <p class="detail-body">A power-free, mechanical approach<br class="d" />that avoids reliance on batteries or software.<br />Designed with demanding environments in mind.</p>
+    </div>
+    <div class="art" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section class="scene flip rule" id="guided" data-scene="guided" data-name="Guided">
+  <div class="scene-grid">
+    <div class="copy">
+      <div class="detail-num">— 04</div>
+      <h2 class="detail-name">Guided</h2>
+      <p class="detail-ko">Measurable feedback</p>
+      <p class="detail-body">Feedback designed to indicate correct application in real time,<br class="d" />helping users act with clarity<br class="d" />and reducing the risk of misuse.</p>
+    </div>
+    <div class="art" aria-hidden="true"></div>
+  </div>
+</section>
+
 <!-- ========== CTA ========== -->
-<section class="cta" id="contact">
+<section class="cta" id="contact" data-scene="contact" data-name="Contact">
+  <div class="art cta-art" aria-hidden="true"></div>
   <div class="cta-inner">
     <h2 class="cta-head">
       Ready to build<br />
@@ -767,8 +271,8 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
     </h2>
     <div class="cta-right">
       <p class="cta-text">
-        For pilot projects, clinical collaborations, investment, or media inquiries,
-        get in touch by email.
+        For pilot projects, clinical collaborations, investment, or media inquiries,<br class="d" />
+        get in touch by email.<br />
         You will hear directly from an emergency medicine specialist.
       </p>
       <div class="btn-row">
@@ -782,6 +286,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 </section>
 
 </main>
+
 <!-- ========== FOOTER ========== -->
 <footer class="footer">
   <div class="footer-grid">
@@ -809,7 +314,7 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
 
     <div>
       <div class="footer-col-title">Navigate</div>
-      <nav class="footer-nav">
+      <nav class="footer-nav" aria-label="Footer navigation">
         <a href="#mission">Mission</a>
         <a href="#problem">Pre-ER Problem</a>
         <a href="#values">Principles</a>
@@ -827,19 +332,6 @@ a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-o
   </div>
 </footer>
 
-<script>(() => {
-  const toggle = document.querySelector('.menu-toggle');
-  const links = document.getElementById('primary-links');
-  if (!toggle || !links) return;
-  const mobile = window.matchMedia('(max-width: 650px)');
-  const close = () => { toggle.setAttribute('aria-expanded', 'false'); links.hidden = mobile.matches; };
-  close();
-  toggle.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') !== 'true'; toggle.setAttribute('aria-expanded', String(open)); links.hidden = !open; });
-  links.addEventListener('click', event => { if (event.target.closest('a')) close(); });
-  document.addEventListener('keydown', event => { if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { close(); toggle.focus(); } });
-  mobile.addEventListener('change', close);
-})();
-</script>
-
+<script src="/assets/field.js?v=20261112i" defer></script>
 </body>
 </html>
